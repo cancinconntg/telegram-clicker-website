@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node server.js",
     "preinstall": "rm -rf node_modules/sqlite3 && npm install sqlite3 --build-from-source",
-    "postinstall": "npm rebuild sqlite3"
+    "postinstall": "npm rebuild sqlite3",
+    "db:init": "node database/initDatabase.js",
+    "db:drop": "node database/dropDatabase.js"
   },
   "keywords": [],
   "author": "",
