@@ -14,9 +14,10 @@ async function addReferralToDatabase(data) {
     });
 }
 
-async function updateReferralClicked(telegramId) {
+async function updateReferralStatus(telegramId, updateType) {
+    const column = updateType === 'clicked' ? 'clicked' : 'verified';
     return new Promise((resolve, reject) => {
-        db.run("UPDATE referrals_data SET clicked = 1 WHERE telegramReferralId = ?", [telegramId], function (err) {
+        db.run(`UPDATE referrals_data SET ${column} = 1 WHERE telegramReferralId = ?`, [telegramId], function (err) {
             if (err) reject(err);
             else resolve();
         });
@@ -28,15 +29,6 @@ async function getReferralsForUser(telegramSourceId) {
         db.all("SELECT * FROM referrals_data WHERE telegramSourceId = ?", [telegramSourceId], (err, rows) => {
             if (err) reject(err);
             else resolve(rows);
-        });
-    });
-}
-
-async function updateReferralVerified(telegramId) {
-    return new Promise((resolve, reject) => {
-        db.run("UPDATE referrals_data SET verified = 1 WHERE telegramReferralId = ?", [telegramId], function (err) {
-            if (err) reject(err);
-            else resolve();
         });
     });
 }
@@ -105,9 +97,8 @@ async function addUser(data) {
 
 module.exports = {
     addReferralToDatabase,
-    updateReferralClicked,
+    updateReferralStatus,
     getReferralsForUser,
-    updateReferralVerified,
     getGameDataForUser,
     insertGameData,
     addUserIfNotExists,
