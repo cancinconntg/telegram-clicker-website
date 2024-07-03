@@ -12,7 +12,7 @@ bot.on('message', async (msg) => {
   const referralCode = text.split(' ')[1] || '';
 
   // Telegram Web App URL'si
-  const webAppUrl = `https://t.me/CinnconBot/webapp?start=${referralCode}`;
+  const webAppUrl = `https://telegram-clicker-website.onrender.com/?start=${referralCode}`;
 
   if (text != '') {
     await bot.sendMessage(chatId, "Click on the button 'Play', in order to start a game.", {
@@ -26,7 +26,7 @@ bot.on('message', async (msg) => {
 });
 
 function setCustomChatMenuButton(chatId, referralCode) {
-  const webAppUrl = `https://t.me/CinnconBot/webapp?start=${referralCode}`;
+  const webAppUrl = `https://telegram-clicker-website.onrender.com/?start=${referralCode}`;
   console.log(referralCode);
   const menuButtonData = {
     chat_id: chatId,
