@@ -1,9 +1,9 @@
 {
   "name": "telegram-clicker",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.js & bot.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node server.js & node api/bot.js",
     "preinstall": "rm -rf node_modules/sqlite3 && npm install sqlite3 --build-from-source",
     "postinstall": "npm rebuild sqlite3",
     "db:init": "node database/initDatabase.js",
